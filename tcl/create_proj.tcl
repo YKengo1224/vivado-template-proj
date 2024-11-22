@@ -6,6 +6,7 @@ set PROJECT_NAME       [lindex $argv 0]
 # set BD_TCL             ${HOME_DIR}/tcl/gen_bd.tcl;
 set BD_NAME            [lindex $argv 3]
 set BD_TCL             [lindex $argv 4]
+set IS_VITIS_AI        [lindex $argv 5]
 #lappend ip_repo_path_list [file join ${CURRENT_DIR} "ip_repo"]
 #set ip_repo_path_list "/home/kengo/work/univ/UMV/jpeg-codec-2024/ip_dir/ip_repo"
 #set ip_repo_path_list "/home/kengo/work/UMV/UMV-jpeg-codec-HW/ip_dir/ip_repo"
@@ -50,6 +51,7 @@ if { [ file exists ${WORKSPACE_DIR}/${PROJECT_NAME}.xpr ] == 0 } then {
     create_project -force ${PROJECT_NAME} ${WORKSPACE_DIR} -part ${CHIP}
     set_property -name "board_part_repo_paths" -value [file normalize $BOARD_PATH] -objects [current_project]    
     set_property board_part [get_board_parts -quiet -latest_file_version "*$BOARD*"] [current_project]
+    set_property platform.extensible true [current_project]
     #set ip repo
     if {[info exists ip_repo_path_list] && [llength ${ip_repo_path_list}] > 0 } {
         set_property ip_repo_paths $ip_repo_path_list [current_fileset]

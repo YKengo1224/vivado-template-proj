@@ -1,3 +1,6 @@
+IS_VITIS_AI := true
+#IS_VITIS_AI := false
+
 #remote host address
 REMOTE_NAME     := castella.local
 
@@ -121,7 +124,7 @@ viv_clean: ## clean vivado project ## make viv_clean
 
 $(VIVADO_DIR)/$(XPR_FILE):
 	mkdir -p $(VIVADO_DIR)/$(LOG_DIR)
-	cd $(VIVADO_DIR) && vivado $(VIVADO_OPTS) $(VIVADO_TCL_OPTS) ../$(CREATE_TCL)	-tclargs $(PROJ_DIR) $(BOARD_DIR) $(BOARD) $(BD_NAME) $(BD_TCL)
+	cd $(VIVADO_DIR) && vivado $(VIVADO_OPTS) $(VIVADO_TCL_OPTS) ../$(CREATE_TCL)	-tclargs $(PROJ_DIR) $(BOARD_DIR) $(BOARD) $(BD_NAME) $(BD_TCL) $(IS_VITIS_AI)
 
 $(BITSTREAM_FILE):$(VIVADO_DIR)/$(XPR_FILE) $(BD_FILE)
 	mkdir -p $(VIVADO_DIR)/$(LOG_DIR)
