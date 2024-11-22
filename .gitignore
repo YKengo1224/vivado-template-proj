@@ -1,0 +1,9 @@
+sim_log/*
+sim_work/*
+wave/*
+scripts/__pycache__/* 
+vivado-work/*
+vitis-work/*
+!vitis-work/build
+!vitis-work/build/*
+build/*
